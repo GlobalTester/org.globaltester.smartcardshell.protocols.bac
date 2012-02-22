@@ -8,7 +8,7 @@ import org.globaltester.smartcardshell.protocols.ScshCommandParameter;
 
 public class ProtocolProvider extends AbstractScshProtocolProvider {
 
-	private static final String ignoreSWsetHelpText = "Boolean value if set to true StatusWord will not be checked";
+	private static final String IGNORE_SW_HELP_TEXT = "Boolean value if set to true StatusWord will not be checked";
 	private static ScshCommand selectApplicationEPASS;
 	{
 		selectApplicationEPASS = new ScshCommand("selectApplicationEPASS");
@@ -16,7 +16,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		selectApplicationEPASS.setHelpReturn("");
 		
 		ScshCommandParameter ignoreStatusWord = new ScshCommandParameter("ignoreSW");
-		ignoreStatusWord.setHelp(ignoreSWsetHelpText);
+		ignoreStatusWord.setHelp(IGNORE_SW_HELP_TEXT);
 		selectApplicationEPASS.addParam(ignoreStatusWord);
 
 		String impl = "";
@@ -39,7 +39,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		performBAC.addParam(mrzParam);
 		
 		ScshCommandParameter ignoreStatusWord = new ScshCommandParameter("ignoreSW");
-		ignoreStatusWord.setHelp("Bollean value to set if Mutual Authentication should proof the StatusWord");
+		ignoreStatusWord.setHelp(IGNORE_SW_HELP_TEXT);
 		performBAC.addParam(ignoreStatusWord);
 
 		String impl = "";
