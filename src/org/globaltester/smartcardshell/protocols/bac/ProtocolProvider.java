@@ -13,11 +13,16 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		selectApplicationEPASS = new ScshCommand("selectApplicationEPASS");
 		selectApplicationEPASS.setHelp("Select the ePassport application");
 		selectApplicationEPASS.setHelpReturn("");
+		
+		ScshCommandParameter ignoreStatusWord = new ScshCommandParameter("ignoreSW");
+		ignoreStatusWord.setHelp("Bollean value to set if Mutual Authentication should proof the StatusWord");
+		selectApplicationEPASS.addParam(ignoreStatusWord);
 
 		String impl = "";
+		impl += "if (ignoreSW == undefined) ignoreSW = false;\n";
 		impl += "var cmd = new ByteString(\"00 A4 04 0C 07 A0 00 00 02 47 10 01\", HEX);\n";
 		impl += "card.gt_sendCommand(cmd);\n";
-		impl += "assertStatusWord(SW_NoError, card.SW.toString(HEX));\n";
+		impl += "if (!(ignoreSW)) assertStatusWord(SW_NoError, card.SW.toString(HEX));\n";
 		selectApplicationEPASS.setImplementation(impl);
 	}
 	
@@ -32,10 +37,13 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		ScshCommandParameter mrzParam = new ScshCommandParameter("mrz");
 		mrzParam.setHelp("Complete MRZ of the chip, as String without line breaks or other formatting information");
 		performBAC.addParam(mrzParam);
+		
+		ScshCommandParameter ignoreStatusWord = new ScshCommandParameter("ignoreSW");
+		ignoreStatusWord.setHelp("Bollean value to set if Mutual Authentication should proof the StatusWord");
+		performBAC.addParam(ignoreStatusWord);
 
 		String impl = "";
 		impl += "print(\"perform BAC wit MRZ \" + mrz)\n";
-		
 		impl += "var bac = this.gt_BAC_getBAC();\n";
 		impl += "bac.setMRZ(new Packages.org.globaltester.smartcardshell.protocols.bac.MRZ(mrz));\n";
 		impl += "bac.deriveMrzKeys();\n";
@@ -45,7 +53,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		impl += "var kIFD = bac.getRandomBytes(16);\n";
 		impl += "\n";
 		impl += "var mutualAuthData = bac.computeMutualAuthenticateData(rndIFD, rndICC, kIFD);\n";
-		impl += "var mutualAuthResp = this.gt_ISO7816_mutualAuthenticate(mutualAuthData);\n";
+		impl += "var mutualAuthResp = this.gt_ISO7816_mutualAuthenticate(mutualAuthData, null, ignoreSW);\n";
 		impl += "\n";
 		impl += "var kICC = bac.getKicc(mutualAuthResp);\n";
 		impl += "\n";
