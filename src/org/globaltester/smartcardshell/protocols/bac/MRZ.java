@@ -27,7 +27,7 @@ public class MRZ {
 		return mrz.substring(65, 71);
 	}
 
-	public static String computeCheckDigit(String str) {
+	public String computeCheckDigit(String str) {
 		byte[] pbuffer = str.getBytes();
 		int[] weight = { 7, 3, 1 };
 		int csum = 0;
