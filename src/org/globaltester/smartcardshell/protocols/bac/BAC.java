@@ -7,6 +7,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
 import org.globaltester.logging.logger.TestLogger;
+import org.globaltester.smartcardshell.protocols.icao9303.MRZ;
 import org.globaltester.smartcardshell.protocols.securemessaging.Crypto;
 
 import de.cardcontact.tlv.HexString;
