@@ -45,7 +45,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		String impl = "";
 		impl += "print(\"perform BAC wit MRZ \" + mrz)\n";
 		impl += "var bac = this.gt_BAC_getBAC();\n";
-		impl += "bac.setMRZ(new Packages.org.globaltester.smartcardshell.protocols.bac.MRZ(mrz));\n";
+		impl += "bac.setMRZ(new Packages.org.globaltester.smartcardshell.protocols.icao9303.MRZ(mrz));\n";
 		impl += "bac.deriveMrzKeys();\n";
 		impl += "\n";
 		impl += "var rndICC = this.gt_ISO7816_getChallenge(8);\n";
