@@ -8,11 +8,6 @@ import org.globaltester.smartcardshell.protocols.ScshCommandParameter;
 
 public class ProtocolProvider extends AbstractScshProtocolProvider {
 
-	public static BAC BAC() {
-		BAC o = BACFactory.createNewInstance();
-		return o;
-	}
-
 	private static final String IGNORE_SW_HELP_TEXT = "Boolean value if set to true StatusWord will not be checked";
 	private static ScshCommand selectApplicationEPASS;
 	{
