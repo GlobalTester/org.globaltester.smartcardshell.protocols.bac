@@ -8,6 +8,11 @@ import org.globaltester.smartcardshell.protocols.ScshCommandParameter;
 
 public class ProtocolProvider extends AbstractScshProtocolProvider {
 
+	public static BAC BAC() {
+		BAC o = BACFactory.createNewInstance();
+		return o;
+	}
+
 	private static final String IGNORE_SW_HELP_TEXT = "Boolean value if set to true StatusWord will not be checked";
 	private static ScshCommand selectApplicationEPASS;
 	{
@@ -20,9 +25,8 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		selectApplicationEPASS.addParam(ignoreStatusWord);
 
 		String impl = "";
-		impl += "var cmd = new ByteString(\"00 A4 04 0C 07 A0 00 00 02 47 10 01\", HEX);\n";
-		impl += "card.gt_sendCommand(cmd);\n";
-		impl += "if (!(ignoreSW)) assertStatusWord(SW_NoError, card.SW.toString(HEX));\n";
+		impl += "var epass_aid = new ByteString(\"A0 00 00 02 47 10 01\",HEX);\n";
+		impl += "this.gt_ISO7816_selectAID(epass_aid,ignoreSW);\n";
 		selectApplicationEPASS.setImplementation(impl);
 	}
 	
