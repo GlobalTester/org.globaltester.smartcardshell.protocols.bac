@@ -42,7 +42,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		performBAC.addParam(ignoreStatusWord);
 
 		String impl = "";
-		impl += "print(\"perform BAC wit MRZ \" + mrz)\n";
+		impl += "print(\"perform BAC with MRZ \" + mrz)\n";
 		impl += "var bac = this.gt_BAC_getBAC();\n";
 		impl += "bac.setMRZ(new Packages.org.globaltester.smartcardshell.protocols.icao9303.MRZ(mrz));\n";
 		impl += "bac.deriveMrzKeys();\n";
