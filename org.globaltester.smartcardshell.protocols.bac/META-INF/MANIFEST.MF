@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.globaltester.smartcardshell.protocols.securemessaging;bundle-version="3.0.0",
  org.globaltester.smartcardshell.protocols.iso7816;bundle-version="3.0.0",
  org.globaltester.logging.legacy;bundle-version="3.0.0",
- org.globaltester.smartcardshell.protocols.icao9303;bundle-version="3.0.0"
+ org.globaltester.smartcardshell.protocols.icao9303;bundle-version="3.0.0",
+ org.globaltester.cryptoprovider;bundle-version="0.8.2",
+ org.globaltester.cryptoprovider.bc;bundle-version="0.8.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.globaltester.smartcardshell.protocols.bac
