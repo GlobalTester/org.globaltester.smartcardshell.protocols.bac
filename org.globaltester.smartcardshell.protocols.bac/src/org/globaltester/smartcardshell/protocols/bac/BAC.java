@@ -27,7 +27,6 @@ public class BAC {
 	private SecretKey skMac;	
 	
 	public BAC(){
-		java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 	}
 	
 	public void setMRZ(MRZ mrz){
