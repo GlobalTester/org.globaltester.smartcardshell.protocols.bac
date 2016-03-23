@@ -77,7 +77,7 @@ public class ProtocolProvider extends AbstractScshProtocolProvider {
 		String impl = "";
 		impl += "if (this.gt_BAC_BAC == undefined) {\n";
 		impl += "    print(\"gt_BAC_BAC is not defined yet, will be created now\");\n";
-		impl += "    this.gt_BAC_BAC = new Packages.org.globaltester.smartcardshell.protocols.bac.BAC()";
+		impl += "    this.gt_BAC_BAC = new Packages.org.globaltester.smartcardshell.protocols.bac.BAC();\n";
 		impl += "}\n";
 		impl += "return this.gt_BAC_BAC;\n";
 		getBAC.setImplementation(impl);

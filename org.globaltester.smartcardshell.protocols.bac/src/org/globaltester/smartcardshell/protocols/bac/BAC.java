@@ -26,6 +26,9 @@ public class BAC {
 	private SecretKey skEnc;
 	private SecretKey skMac;	
 	
+
+	public BAC(){
+	}
 	
 	
 	public void setMRZ(MRZ mrz){
